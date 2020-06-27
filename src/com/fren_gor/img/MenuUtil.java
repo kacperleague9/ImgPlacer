@@ -36,7 +36,7 @@ public class MenuUtil implements Listener {
 		if (e.getClickedInventory() == null) {
 			return;
 		}
-		if (e.getClickedInventory().getTitle().equals("§a§lSelect Map")) {
+		if (e.getClickedInventory().getTitle().equals("Â§aÂ§lWybrany obraz")) {
 			e.setCancelled(true);
 		} else {
 			return;
@@ -59,7 +59,7 @@ public class MenuUtil implements Listener {
 					if (Main.h.containsKey(it.getUniqueId()))
 						Main.h.remove(it.getUniqueId());
 					Main.h.put(it.getUniqueId(), o.s);
-					p.sendMessage("§aSelected map: §e" + o.s);
+					p.sendMessage("Â§aWybrany obraz: Â§e" + o.s);
 					p.closeInventory();
 					return;
 
@@ -76,9 +76,9 @@ public class MenuUtil implements Listener {
 					if (e.getWhoClicked().hasPermission("img.image")
 							|| e.getWhoClicked().hasPermission("img.image." + o.s)) {
 						it.setItem(new ItemStack(Material.MAP, 1, new Map(Main.li.get(o.s)).data));
-						p.sendMessage("§aSelected map: §e" + o.s);
+						p.sendMessage("Â§aWybrany obraz: Â§e" + o.s);
 					} else {
-						p.sendMessage("§cYou cannot select this image, you don't have permissions!");
+						p.sendMessage("Â§cBrak permisji!");
 						p.closeInventory();
 						return;
 					}
@@ -148,7 +148,7 @@ public class MenuUtil implements Listener {
 	}
 
 	static {
-		left = new ClickableItem(MapUtil.setName(MapUtil.getArrowWoodLeft(), "§9Prev. Page")) {
+		left = new ClickableItem(MapUtil.setName(MapUtil.getArrowWoodLeft(), "Â§ePoprzednia Strona")) {
 
 			@Override
 			public void onClick(Player p) {
@@ -159,7 +159,7 @@ public class MenuUtil implements Listener {
 
 			}
 		};
-		right = new ClickableItem(MapUtil.setName(MapUtil.getArrowWoodRight(), "§9Next Page")) {
+		right = new ClickableItem(MapUtil.setName(MapUtil.getArrowWoodRight(), "Â§eNastepna Strona")) {
 
 			@Override
 			public void onClick(Player p) {
@@ -170,8 +170,8 @@ public class MenuUtil implements Listener {
 
 			}
 		};
-		click = new ClickableItem(MapUtil.setName(new ItemStack(Material.BARRIER), "§cSet Empty", "",
-				"§eClick this if you want", "§eto use this ItemFrame", "§eas Spray ItemFrame")) {
+		click = new ClickableItem(MapUtil.setName(new ItemStack(Material.BARRIER), "Â§cUsun", "",
+				"Â§7Kliknij jesli chcesz", "Â§7aby uzyc tej ramki", "Â§7jako sprej.")) {
 
 			@Override
 			public void onClick(Player p) {
@@ -193,9 +193,9 @@ public class MenuUtil implements Listener {
 	}
 
 	private Inventory getBaseInv() {
-		Inventory inv = Bukkit.createInventory(null, 54, "§a§lSelect Map");
+		Inventory inv = Bukkit.createInventory(null, 54, "Â§aÂ§lWybierz Obraz");
 
-		ItemStack paper = MapUtil.setDisplayName(new ItemStack(Material.PAPER), "§ePage ");
+		ItemStack paper = MapUtil.setDisplayName(new ItemStack(Material.PAPER), "Â§eStrona ");
 
 		inv.setItem(18, left.getItemStack());
 		inv.setItem(26, right.getItemStack());
@@ -267,7 +267,7 @@ public class MenuUtil implements Listener {
 				inv.addItem(i);
 		}
 
-		inv.setItem(49, MapUtil.setDisplayName(new ItemStack(Material.PAPER, page), "§ePage " + String.valueOf(page)));
+		inv.setItem(49, MapUtil.setDisplayName(new ItemStack(Material.PAPER, page), "Â§eStrona " + String.valueOf(page)));
 		if (bool)
 			p.openInventory(inv);
 		b = false;
@@ -311,7 +311,7 @@ public class MenuUtil implements Listener {
 				inv.addItem(i);
 		}
 
-		inv.setItem(49, MapUtil.setDisplayName(new ItemStack(Material.PAPER, page), "§ePage " + String.valueOf(page)));
+		inv.setItem(49, MapUtil.setDisplayName(new ItemStack(Material.PAPER, page), "Â§eStrona " + String.valueOf(page)));
 		if (bool)
 			p.openInventory(inv);
 		b = false;
@@ -328,7 +328,7 @@ public class MenuUtil implements Listener {
 			@Override
 			public void run() {
 				if (p.getOpenInventory().getTopInventory() == null
-						|| !p.getOpenInventory().getTopInventory().getTitle().equals("§a§lSelect Map")) {
+						|| !p.getOpenInventory().getTopInventory().getTitle().equals("Â§aÂ§lWybierz Obraz")) {
 					if (b) {
 						return;
 					}
